@@ -3,32 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Instituição.Departamentos;
 
 namespace Instituição
 {
     internal class Instituicao
     {
         public String Nome { get; set; }
-        public String Endereço { get; set; }
-        public Departamentos[] departamentos { get; set; } =
-            new Departamentos[10];
-
-        int posicaoDepartamento = 0;
-
-        public void GerarDepartamentos(Departamentos d)
+        public Endereco Endereco { get; set; }
+        public Departamentos[] Departamentos
+        { get; } = new Departamentos[10];
+        public void nome(string nome)
         {
-            if (posicaoDepartamento < 10)
-            {
-                departamentos[posicaoDepartamento++] = d;
-
-            }
+            this.Nome = nome;
         }
-        public void ListarDepartamentos()
+        private int quantidadeDepartamentos = 0;
+
+        public void RegistrarDepartamento(Departamentos d)
         {
-            for (int i = 0; i < posicaoDepartamento; i++)
-            {
-                Console.WriteLine(departamentos[i].Nome);
-            }
+            if (quantidadeDepartamentos < 10)
+                Departamentos[quantidadeDepartamentos++] = d;
+        }
+
+        public int ObterQuantidadeDepartamentos()
+        {
+            return quantidadeDepartamentos;
         }
     }
 }
